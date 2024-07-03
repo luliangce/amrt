@@ -1,0 +1,30 @@
+expressions:
+  - desc: 标准格式
+    expression: |-
+      \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3}\|
+    known:
+      - |-
+        \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3}\|[^\n]+verify_blacklist[^\n]+([^\n]+?\n)*?[^\n]+driver\d-.{32}$
+      - |-
+        \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3}\|[^\n]+Cost time[^\n]+\n|[^\n]+\n$
+      - |-
+        \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3}\|[^\n]+Traceback[^\n]+\n([^\n]+\n)*?|[^\n]*-\S{32}$
+
+  - desc: 网络请求日志
+    expression: |-
+      \d{2}-\d{2}-\d{4}:\d{2}:\d{2}:\d{2},\d+
+  - desc: 莫名其妙的时间戳
+    expression: |-
+      \d{10}
+  - desc: 莫名奇妙的打印图片类型
+    expression: |-
+      image\/
+  - desc: 莫名奇妙的打印oss文件名
+    expression: |-
+      \/camel.+?(jpe*g|png|pdf)
+  - desc: 莫名奇妙的打印时间日期
+    expression: |-
+      .+?, \d+ .+? \d{4} \d{2}:\d{2}:\d{2} GMT
+  - desc: 莫名奇妙的身份证图片文件名
+    expression: |-
+      .{32}_.+?\.(png|jpe*g)
